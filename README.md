@@ -48,7 +48,7 @@ Replace the contents of bin/<your-main-file>.ts  with the following:
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import * as blueprints from '@aws-quickstart/eks-blueprints';
-import * as Cilium from '@testruction/cilium-eks-blueprints-addon';
+import * as CiliumAddon from '@testruction/cilium-eks-blueprints-addon';
 const app = new cdk.App();
 // AddOns for the cluster.
 const addOns: Array<blueprints.ClusterAddOn> = [
@@ -59,10 +59,7 @@ const addOns: Array<blueprints.ClusterAddOn> = [
     new blueprints.addons.CoreDnsAddOn(),
     new blueprints.addons.KubeProxyAddOn(),
     new blueprints.addons.EbsCsiDriverAddOn(),
-    new Cilium({
-        encryptionEnabled: true
-        encryptionType: 'wireguard'
-     })
+    new CiliumAddon()
 ];
 const account = 'XXXXXXXXXXXXX'
 const region = 'your region'
@@ -83,9 +80,9 @@ Let’s verify the resources created by Steps above.
 ```bash
 kubectl get nodes  # Output shows the EKS Managed Node group nodes
 
-kubectl get ns | monitoring  # Output shows kubeflow namespace
+kubectl get ns | kube-system  # Output shows kubeflow namespace
 
-kubectl get pods --namespace=monitoring  # Output shows kubeflow pods
+kubectl get pods --namespace=kue-system  # Output shows kubeflow pods
 ```
 
 
