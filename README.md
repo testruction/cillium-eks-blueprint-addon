@@ -1,4 +1,4 @@
-# cilium-eks-blueprint-add
+# cilium-eks-blueprint-addon
 
 This module is a Cilium addon for https://github.com/aws-quickstart/cdk-eks-blueprints.
 
@@ -14,7 +14,7 @@ This example deploys the following resources
 
 * Creates EKS Cluster Control plane with public endpoint (for demo purpose only) with a managed node group
 * Deploys supporting add-ons: ClusterAutoScaler, AwsLoadBalancerController, VpcCni, CoreDns, KubeProxy, EbsCsiDriver
-* Deploy Kube-Prometheurs on the EKS cluster
+* Deploy Cillium on the EKS cluster
 
 ## Prerequisites:
 
